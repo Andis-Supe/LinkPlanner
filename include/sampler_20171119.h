@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_SAMPLER_H_
 # define PROGRAM_INCLUDE_SAMPLER_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include <vector>
 
 // Takes a sampling of the input electrical signal

@@ -2,16 +2,13 @@
 # define PULSE_SHAPER_H_
 
 # include <vector>
-# include "netxpto.h"
-# include "filter_20180306.h"
-# include "fft_20180208.h"
-# include "overlap_save_20180208.h"
+# include "netxpto_20180118.h"
 
 using namespace std;
 
-enum PulseShaperFilter { RaisedCosine, RootRaisedCosine, Gaussian, Square };
+enum PulseShaperFilter { RaisedCosine, Gaussian, Square };
 
-/* Raised-cosine filter FIR implementation. */
+
 class PulseShaper : public FIR_Filter{
 
 	/* Input Parameters */
@@ -21,9 +18,12 @@ class PulseShaper : public FIR_Filter{
 
 	double rollOffFactor{ 0.9 };						// Roll-off factor (roll) for the raised-cosine filter
 
-	double BTs{ 0.5 };									// Bandwidth-symbil time product of gaussian filter
-
 	bool passiveFilterMode{ false };
+
+	double pulseWidth{ 1.0 };								// in units of time (ms)
+
+	double pulseDelay{ 0.0 };								// in units of time (ms)
+
 
 public:
 
@@ -42,10 +42,16 @@ public:
 	void setRollOffFactor(double rOffFactor){ rollOffFactor = rOffFactor; };
 	double const getRollOffFactor(){ return rollOffFactor; };
 
-	void setBTs(double bandwidthSymbolTimeProduct) { BTs = bandwidthSymbolTimeProduct; };
-	double const getBTs() { return BTs; };
-
 	void usePassiveFilterMode(bool pFilterMode){ passiveFilterMode = pFilterMode; };
+
+	void setImpulseResponseLength(int impLength) { impulseResponseLength = impLength; };
+	int getImpulseResponseLength() { return impulseResponseLength; };
+
+	void setPulseWidth(double pWidth) { pulseWidth = pWidth; };
+	double getPulseWidth() { return pulseWidth; };
+
+	void setPulseDelay(double pDelay) { pulseDelay = pDelay; };
+	double getPulseDelay() { return pulseDelay; };
 		
 };
 

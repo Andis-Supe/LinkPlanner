@@ -1,12 +1,12 @@
 # ifndef PROGRAM_INCLUDE_I_HOMODYNE_RECEIVER_H_
 # define PROGRAM_INCLUDE_I_HOMODYNE_RECEIVER_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
-# include "photodiode_old.h"
-# include "ideal_amplifier.h"
-# include "white_noise.h"
-# include "add.h"
+# include "photodiode_old_20180118.h"
+# include "ideal_amplifier_20180118.h"
+# include "white_noise_20180118.h"
+# include "add_20171116.h"
 
 // Balanced Homodyne Receiver superblock
 class I_HomodyneReceiver : public SuperBlock {

@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
 # define PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 #include <random>
 
 // Simulates a photodiode
@@ -30,7 +30,7 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setResponsivity(double Responsivity) { responsivity = Responsivity; }
+	void setResponsivity(t_real Responsivity) { responsivity = Responsivity; }
 	double const getResponsivity(void) { return responsivity; }
 
 	void useNoise(bool sNoise) { shotNoise = sNoise; }

@@ -1,20 +1,18 @@
 # ifndef PROGRAM_INCLUDE_HOMODYNE_RECEIVER_H_
 # define PROGRAM_INCLUDE_HOMODYNE_RECEIVER_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
-# include "optical_hybrid.h"
-# include "photodiode_old.h"
-# include "subtractor.h"
-# include "ideal_amplifier.h"
-# include "decoder.h"
-# include "local_oscillator.h"
-# include "sampler.h"
-# include "super_block_interface.h"
-# include "pulse_shaper.h"
-# include "clock.h"
-# include "white_noise.h"
-# include "add.h"
+# include "optical_hybrid_20180118.h"
+# include "photodiode_old_20180118.h"
+# include "ideal_amplifier_20180118.h"
+# include "decoder_20180118.h"
+# include "local_oscillator_20180118.h"
+# include "sampler_20171119.h"
+# include "super_block_interface_20180118.h"
+# include "pulse_shaper_20180118.h"
+# include "white_noise_20180118.h"
+# include "add_20171116.h"
 
 
 // this is a test block for the purpose of beta testing new code
@@ -142,18 +140,25 @@ public:
 	void  setResponsivity(t_real Responsivity) { B3.setResponsivity(Responsivity); B4.setResponsivity(Responsivity); };
 
 	void setAmplification(t_real Amplification) { B5.setGain(Amplification); B6.setGain(Amplification); };
+	
 	void setNoiseAmplitude(t_real NoiseAmplitude) { B7.setNoiseSpectralDensity(NoiseAmplitude); B8.setNoiseSpectralDensity(NoiseAmplitude);};
+	void setSeeds(array<int,2> noiseSeeds) { B7.setSeed(noiseSeeds[0]); B8.setSeed(noiseSeeds[1]); };
+	void setSeedType(SeedType seedType) { B7.setSeedType(seedType); B8.setSeedType(seedType); };
 
 	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
 	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };
 	void setRollOffFactor(double rOffFactor) { B11.setRollOffFactor(rOffFactor); B12.setRollOffFactor(rOffFactor); };
+	void usePassiveFilterMode(bool pFilterMode) { B11.usePassiveFilterMode(pFilterMode); B12.usePassiveFilterMode(pFilterMode); }
+	void setImpulseResponseFilename(string fName) { B11.setImpulseResponseFilename(fName); B12.setImpulseResponseFilename(fName); }
+	void setFirstFilteredValueToBeSaved(int value) { HMD14.setFirstValueToBeSaved(value); HMD15.setFirstValueToBeSaved(value);}; // SeeBeginningOfImpulseResponse does not remove
+	int getFirstFilteredValueToBeSaved() { HMD14.getFirstValueToBeSaved(); };													 // all unwanted values from the signal.
 
 	//void setClockPeriod(double per) { B13A.setClockPeriod(per); B13B.setClockPeriod(per); };
 
 	void setSamplesToSkip(int sToSkip) { B13.setSamplesToSkip(sToSkip); B14.setSamplesToSkip(sToSkip); };
 
 	void setSamplerOpticalPower_dBm(double optPower_dBm) { B13.setOutputOpticalPower_dBm(optPower_dBm); B14.setOutputOpticalPower_dBm(optPower_dBm); };
-
+	
 };
 
 #endif

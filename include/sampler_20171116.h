@@ -24,11 +24,11 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setSamplesToSkip(int sToSkip) { samplesToSkip = sToSkip; }
-	int const getSamplesToSkip(void) { return samplesToSkip; }
 	Sampler() {};
 	Sampler(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
 
+	void setSamplesToSkip(int sToSkip) { samplesToSkip = sToSkip; }
+	int const getSamplesToSkip(void) { return samplesToSkip; }
 	//void setSamplingRate(int Sampling) { sampling = Sampling; }
 	//void setDelay(int Delay) { delay = Delay; }
 	void setOutputOpticalPower(double outOpticalPower) { outputOpticalPower = outOpticalPower; }

@@ -4,7 +4,7 @@
 # include <algorithm>   // std::min
 # include <string>		// compare
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
 class Sink : public Block {
 
